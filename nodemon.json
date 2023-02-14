@@ -1,0 +1,9 @@
+{
+    "env": {
+        "SQL_ROOT_DIRECTORY": "root",
+        "SQL_HOST": "127.0.0.1",
+        "SQL_DIALECT": "mysql",
+        "SQL_PASSWORD": "Ahano1one$",
+        "SQL_DEFAULT_DATABASE": "aerosmart-db"
+    }
+}
