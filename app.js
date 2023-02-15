@@ -1,5 +1,6 @@
 
 const express = require('express')
+const fs = require('fs')
 const cors = require('cors')
 const path = require('path')
 require("dotenv").config()
@@ -21,6 +22,15 @@ const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 
+// production 
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'access.log'),
+  { flags: 'a' }
+);
+app.use(helmet());
+app.use(compression());
+app.use(morgan('combined', { stream: accessLogStream }));
+
 app.use(express.json());
 app.use(cors({
     origin: '*',    
@@ -28,6 +38,8 @@ app.use(cors({
 app.use(cors({
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
+
+
 
 app.use('/graphql', graphqlHTTP({
   schema: graphqlSchema,
@@ -67,6 +79,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
+const PORT = process.env.PORT || 8080
 
-
-app.listen(process.env.PORT || 8080);
+app.listen(PORT, () => {
+  console.log("Server is running....")
+})

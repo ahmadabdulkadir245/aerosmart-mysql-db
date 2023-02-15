@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
-
 const Product = require('../models/product');
 // const User = require('../models/user');
 
@@ -17,7 +16,7 @@ module.exports = {
         //     // userId: req.user.id
         //   })
 
-        const createdProduct = await new Product(null,  productInput.title,  productInput.imageUrl,  productInput.description,  productInput.price);
+        const createdProduct = await new Product(null,  productInput.title,  productInput.imageUrl,  productInput.description,  productInput.price, 1);
 
         createdProduct.save()
     
@@ -27,6 +26,7 @@ module.exports = {
           price: createdProduct.price,
           imageUrl: createdProduct.imageUrl,
           description: createdProduct.description,
+          creator: 1,
           createdAt: createdProduct.createdAt.toISOString(),
           updatedAt: createdProduct.updatedAt.toISOString()
         };
