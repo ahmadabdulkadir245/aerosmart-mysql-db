@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: 'sql.freedb.tech',
     user: 'freedb_aerosmart',
     database: 'freedb_AerosmartDb',
-    password: 'KJPQj&Qt?8JSNH&',
+    password: 'ESe%vJ?Hu8Hbpyj',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
