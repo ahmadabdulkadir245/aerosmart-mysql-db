@@ -7,28 +7,20 @@ const Product = require('../models/product');
 
 module.exports = {
     createProduct: async function({ productInput }, req) {
-   
-        // const createdProduct = await Product.create({
-        //     title: productInput.title,
-        //     price: productInput.price,
-        //     imageUrl: productInput.imageUrl,
-        //     description: productInput.description,
-        //     // userId: req.user.id
-        //   })
 
-        const createdProduct = await new Product(null,  productInput.title,  productInput.imageUrl,  productInput.description,  productInput.price, 1);
+        const product = new Product(null, productInput.title, productInput.imageUrl, productInput.description, productInput.price, 1);
 
-        createdProduct.save()
+         await product.save()
     
         return {
-          id: createdProduct.id.toString(),
-          title: createdProduct.title,
-          price: createdProduct.price,
-          imageUrl: createdProduct.imageUrl,
-          description: createdProduct.description,
-          creator: 1,
-          createdAt: createdProduct.createdAt.toISOString(),
-          updatedAt: createdProduct.updatedAt.toISOString()
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          imageUrl: product.imageUrl,
+          description: product.description,
+          // creator: 1,
+          // createdAt: createdProduct.createdAt.toISOString(),
+          // updatedAt: createdProduct.updatedAt.toISOString()
         };
       },
 
@@ -50,8 +42,8 @@ module.exports = {
                 price: product.price,
                 imageUrl: product.imageUrl,
                 description: product.description,
-                // createdAt: product.createdAt.toISOString(),
-                // updatedAt: product.updatedAt.toISOString()
+                createdAt: product.createdAt.toISOString(),
+                updatedAt: product.updatedAt.toISOString()
             };
           }),
           totalPosts: totalPosts
@@ -75,8 +67,8 @@ module.exports = {
           price: product.price,
           imageUrl: product.imageUrl,
           description: product.description,
-          // createdAt: product.createdAt.toISOString(),
-          // updatedAt: product.updatedAt.toISOString()
+          createdAt: product.createdAt.toISOString(),
+          updatedAt: product.updatedAt.toISOString()
         };
       },
 }

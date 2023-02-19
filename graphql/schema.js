@@ -3,10 +3,10 @@ module.exports = buildSchema(`
 
     type Product {
         id: ID
-        title: String
-        price: Int
-        imageUrl: String
-        description: String
+        title: String!
+        price: Int!
+        imageUrl: String!
+        description: String!
         creator: User
         createdAt: String
         updatedAt: String

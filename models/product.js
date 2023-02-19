@@ -9,12 +9,12 @@ module.exports = class Product {
     this.imageUrl = imageUrl;
     this.description = description;
     this.price = price;
-    this.userId = userId
+    this.userId = userId;
   }
 
   save() {
     return db.execute(
-      'INSERT INTO products (title, price, imageUrl, description, userId) VALUES (?, ?, ?, ?,?)',
+      'INSERT INTO products (title, price, imageUrl, description, userId) VALUES (?, ?, ?, ?, ?)',
       [this.title, this.price, this.imageUrl, this.description, this.userId]
     );
   }

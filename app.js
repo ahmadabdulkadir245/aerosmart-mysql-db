@@ -21,13 +21,16 @@ const graphqlResolver = require('./graphql/resolvers')
 const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
+const Product = require('./models/product')
 
 // production 
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, 'access.log'),
   { flags: 'a' }
 );
-app.use(helmet());
+// app.use(helmet({
+//   contentSecurityPolicy: false,
+// }));
 app.use(compression());
 app.use(morgan('combined', { stream: accessLogStream }));
 
@@ -77,9 +80,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8000
 
 app.listen(PORT, () => {
   console.log("Server is running....")
