@@ -35,7 +35,7 @@ module.exports = {
         })
         .catch(err => console.log(err));
         return {
-          products: products.reverse().map(product => {
+          products: products.map(product => {
             return {
                 id: product.id,
                 title: product.title,
